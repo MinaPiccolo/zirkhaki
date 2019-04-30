@@ -15,6 +15,12 @@ public class player : MonoBehaviour
     {
         _instance = this;
     }
+
+    //public int CheckInventoryFull
+    //{
+    //    get {return checkInventoryFull(); }
+    //}
+
     void Start()
     {
         
@@ -25,9 +31,11 @@ public class player : MonoBehaviour
         if (findEmptySlot !=-1)
         {
             inventory[findEmptySlot] = indexItem;
+
         }
+        HUD.Instance.showInventory();
     }
-    int checkInventoryFull()
+  public int checkInventoryFull()
     {
         for (int i = 0; i < inventory.Length; i++)
             if (inventory[i] == 0)

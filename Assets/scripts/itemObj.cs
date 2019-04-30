@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class itemObj : MonoBehaviour
 {
     public int index;
+    public int type;
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(() => { onClickGameObj(); });
@@ -16,7 +17,11 @@ public class itemObj : MonoBehaviour
     }
     void onClickGameObj()
     {
-        player.Instance.putToInventory(index);
+        if (player.Instance.checkInventoryFull() != -1)
+        {
+            player.Instance.putToInventory(type);
+            simplePool.Despawn(gameObject);
+        }
     }
     void Update()
     {
