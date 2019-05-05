@@ -33,7 +33,7 @@ public class scratchableObj : MonoBehaviour
         if (count >= scratchToDrop)
         {
             simplePool.Despawn(gameObject);
-            itemsController.Instance.dropItems(5, 0);
+            itemsController.Instance.dropItems(0);
 
         }
     }
