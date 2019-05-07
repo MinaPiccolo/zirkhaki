@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063cb744ccb93244882ed665a0ed7a90, type: 3}
+  m_Name: mapData
+  m_EditorClassIdentifier: 
+  StatesList:
+  - StateId: 0
+    RequiredFame: 0
+    LevelsList:
+    - LevelId: 0
+      NameLvl: 
+      Description: 
+      AddressImg: 
+      LocationLvl: {fileID: 0}
+      Cost: 0
+      timeLvl: 0
+      RegionsList:
+      - RegionId: 0
+        LocationRegion: {fileID: 0}
+        SpriteRegionImg: 
+        ObstaclesList:
+        - ObstacleId: 0
+          LocationObstacle: {fileID: 0}
+          TypeObstacle: 0
+          NumberScrachToDestroy: 0
+      - RegionId: 0
+        LocationRegion: {fileID: 0}
+        SpriteRegionImg: 
+        ObstaclesList: []
+      - RegionId: 0
+        LocationRegion: {fileID: 0}
+        SpriteRegionImg: 
+        ObstaclesList: []
+      ItemsList:
+        MainItemsList:
+        - NameMainItem: 
+          IncomeCurrency: 0
+          NumberOfPices: 0
+        - NameMainItem: 
+          IncomeCurrency: 0
+          NumberOfPices: 0
+        RareItemsList:
+        - NameRareItem: 
+          IncomeCurrency: 0
+          NumberOfPices: 0
+        NumberJunkItems: 10

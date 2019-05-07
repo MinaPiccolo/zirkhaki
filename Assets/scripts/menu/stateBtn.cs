@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class stateBtn : MonoBehaviour
 {
     public int indexState;
+
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(() => { onClickStateBtn(); });
     }
     void onClickStateBtn()
     {
-        wholeMap.Instance.currentState = indexState;
-        wholeMap.Instance.zoomin();
+        mapMoving.Instance.currentState = indexState;
+        mapMoving.Instance.zoomin();
     }
     void Update()
     {

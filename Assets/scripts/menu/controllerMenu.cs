@@ -4,22 +4,11 @@ using UnityEngine;
 
 public class controllerMenu : MonoBehaviour
 {
-   
-
-    //public int CurrentState
-    //{
-    //    set { currentState = value; }
-    //    get { return currentState; }
-    //}
-    static controllerMenu _instance;
-    public static controllerMenu Instance
-    {
-        get { return _instance; }
-    }
+    public static controllerMenu Instance { get; private set; }
 
     void Awake()
     {
-        _instance = this;
+        Instance = this;
     }
 
   
