@@ -1,0 +1,37 @@
+﻿using UnityEngine;
+using Revy.Framework;
+
+namespace MyNamespace
+{
+	public class #ClassName# : IGameManager, I#ClassName#
+	{
+		#region Fields
+        #endregion Fields
+
+		#region Properties
+
+		public System.Type ServiceType => typeof(I#ClassName#);
+
+        #endregion Properties
+
+		#region Constructor & Destructor
+
+        public #ClassName# ()
+        {
+            MFramework.Register(this);
+        }
+
+        ~#ClassName# ()
+        {
+            MFramework.UnRegister(this);
+        }
+
+        #endregion Constructor & Destructor
+
+        #region Public Methods
+        #endregion Public Methods
+
+        #region Helpers     
+        #endregion Helpers
+	}
+}

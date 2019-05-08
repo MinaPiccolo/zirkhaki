@@ -1,0 +1,12 @@
+{
+	"name": "com.sarv.revyframework",
+	"displayName": "Revy-Framework",
+	"version": "0.10.3-preview",
+	"unity": "2018.3",
+	"description": "Revy-Framework is a gameplay scripting framework.",
+	"keywords": ["RevyFramework", "Framework", "gameplay", "scripting"],
+	"category": "",
+	"dependencies": {
+	"com.unity.addressables": "0.5.3-preview"
+	}
+}

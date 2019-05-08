@@ -1,0 +1,12 @@
+{
+    "name": "Revy.Framework.ScriptableObjectFactory.Editor",
+    "references": [
+        "Revy.Framework"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

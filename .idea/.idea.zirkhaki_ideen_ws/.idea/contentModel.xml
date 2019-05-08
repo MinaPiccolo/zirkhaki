@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\ART\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\ART\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_zirkhaki_ideen_ws.-1321460628.00" t="ExcludeRecursive" />
+    <e p="D:\Projects\zirkhaki_ideen_ws" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="scripts" t="Include">
+          <e p="Data" t="Include">
+            <e p="ItemsData.cs" t="Include" />
+            <e p="JunkItemsData.cs" t="Include" />
+            <e p="LevelData.cs" t="Include" />
+            <e p="MainItemsData.cs" t="Include" />
+            <e p="makeStateScribtaleObj.cs" t="Include" />
+            <e p="MapData.cs" t="Include" />
+            <e p="ObstacleData.cs" t="Include" />
+            <e p="RareItemsData.cs" t="Include" />
+            <e p="RegionData.cs" t="Include" />
+            <e p="StateData.cs" t="Include" />
+          </e>
+          <e p="Inventory" t="Include">
+            <e p="InventoryItem.cs" t="Include" />
+          </e>
+          <e p="Item" t="Include">
+            <e p="ItemController.cs" t="Include" />
+            <e p="ItemObj.cs" t="Include" />
+            <e p="ItemType.cs" t="Include" />
+          </e>
+          <e p="Managers" t="Include">
+            <e p="Controller.cs" t="Include" />
+            <e p="HUD.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
+            <e p="SimplePool.cs" t="Include" />
+          </e>
+          <e p="menu" t="Include">
+            <e p="controllerMenu.cs" t="Include" />
+            <e p="mainMenu.cs" t="Include" />
+            <e p="mapMoving.cs" t="Include" />
+            <e p="PinchZoom.cs" t="Include" />
+            <e p="stateBtn.cs" t="Include" />
+            <e p="wholeMap.cs" t="Include" />
+          </e>
+          <e p="Obstacle" t="Include">
+            <e p="ObstacleController.cs" t="Include" />
+            <e p="ObstacleObj.cs" t="Include" />
+            <e p="ObstacleType.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive">
+        <e p="Framework" t="Include">
+          <e p="Editor" t="Include">
+            <e p="Attributes" t="Include">
+              <e p="ReadOnly" t="Include">
+                <e p="ReadOnlyPropertyDrawer.cs" t="Include" />
+                <e p="Revy.Framework.Attributes.Editor.asmdef" t="Include" />
+              </e>
+            </e>
+            <e p="Core" t="Include">
+              <e p="EdFrameworkConfig.cs" t="Include" />
+              <e p="Revy.Framework.Core.Editor.asmdef" t="Include" />
+            </e>
+            <e p="ScriptableObjects" t="Include">
+              <e p="Revy.Framework.ScriptableObjectFactory.Editor.asmdef" t="Include" />
+              <e p="ScriptableObjectFactory.cs" t="Include" />
+              <e p="ScriptableObjectWindow.cs" t="Include" />
+            </e>
+            <e p="ScriptTemplate" t="Include">
+              <e p="CreateAssetEditor.cs" t="Include" />
+              <e p="Resources" t="Include">
+                <e p="FClassTemplate.txt" t="Include" />
+                <e p="FComponentTemplate.txt" t="Include" />
+                <e p="GameManagerTemplate.txt" t="Include" />
+                <e p="GameSystemTemplate.txt" t="Include" />
+                <e p="InterfaceTemplate.txt" t="Include" />
+                <e p="SubsystemTemplate.txt" t="Include" />
+              </e>
+              <e p="Revy.Framework.ScriptTemplate.Editor.asmdef" t="Include" />
+            </e>
+            <e p="SubSystems" t="Include">
+              <e p="ObjectPool" t="Include">
+                <e p="AssetBundlePostProcessor.cs" t="Include" />
+                <e p="Revy.Framework.ObjectsPool.Editor.asmdef" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Runtime" t="Include">
+            <e p="Attributes" t="Include">
+              <e p="CDisableAutoInstantiationAttribute.cs" t="Include" />
+              <e p="CInjectAttribute.cs" t="Include" />
+              <e p="CSetGameManagerAttribute.cs" t="Include" />
+              <e p="ReadOnly" t="Include">
+                <e p="ReadOnlyAttribute.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Core" t="Include">
+              <e p="CUtilities.cs" t="Include" />
+              <e p="EndOfFrameTick.cs" t="Include" />
+              <e p="FClass.cs" t="Include" />
+              <e p="FComponent.cs" t="Include" />
+              <e p="FComponentSingleton.cs" t="Include" />
+              <e p="FDefaultGameManager.cs" t="Include" />
+              <e p="FixedTick.cs" t="Include" />
+              <e p="FScriptableObject.cs" t="Include" />
+              <e p="FSFrameworkConfig.cs" t="Include" />
+              <e p="GameSystem.cs" t="Include" />
+              <e p="Initialization.cs" t="Include" />
+              <e p="Injection.cs" t="Include" />
+              <e p="Interfaces" t="Include">
+                <e p="IActiveable.cs" t="Include" />
+                <e p="IDefaultGameManager.cs" t="Include" />
+                <e p="IDIRegister.cs" t="Include" />
+                <e p="IEndOfFrameTick.cs" t="Include" />
+                <e p="IExecutionOrder.cs" t="Include" />
+                <e p="IFixedTick.cs" t="Include" />
+                <e p="IGameManager.cs" t="Include" />
+                <e p="IGameSystem.cs" t="Include" />
+                <e p="IInitializable.cs" t="Include" />
+                <e p="IInjectable.cs" t="Include" />
+                <e p="IInteractable.cs" t="Include" />
+                <e p="ILateTick.cs" t="Include" />
+                <e p="IPauseable.cs" t="Include" />
+                <e p="IPersistable.cs" t="Include" />
+                <e p="ISubsystem.cs" t="Include" />
+                <e p="ITerminalIndex.cs" t="Include" />
+                <e p="ITick.cs" t="Include" />
+                <e p="ITransientable.cs" t="Include" />
+              </e>
+              <e p="LateTick.cs" t="Include" />
+              <e p="MFramework.cs" t="Include" />
+              <e p="Pause.cs" t="Include" />
+              <e p="Persistent.cs" t="Include" />
+              <e p="PersistentSubCategories.cs" t="Include" />
+              <e p="Subsystem.cs" t="Include" />
+              <e p="Terminal.cs" t="Include" />
+              <e p="Tick.cs" t="Include" />
+              <e p="TickHandler.cs" t="Include" />
+              <e p="Transient.cs" t="Include" />
+            </e>
+            <e p="Revy.Framework.asmdef" t="Include" />
+            <e p="SubSystems" t="Include">
+              <e p="Debug" t="Include">
+                <e p="Attributes" t="Include">
+                  <e p="CFieldAttribute.cs" t="Include" />
+                  <e p="CMethodAttribute.cs" t="Include" />
+                  <e p="CPropertyAttribute.cs" t="Include" />
+                </e>
+                <e p="CTerminalPrimitiveCommands.cs" t="Include" />
+                <e p="FDebug.cs" t="Include" />
+                <e p="FFPSCounter.cs" t="Include" />
+                <e p="FTerminal.cs" t="Include" />
+                <e p="IDebug.cs" t="Include" />
+              </e>
+              <e p="Dependency Injection" t="Include">
+                <e p="CDependencyInjection.cs" t="Include" />
+              </e>
+              <e p="EventSystem" t="Include">
+                <e p="CEventFilterAttribute.cs" t="Include" />
+                <e p="CExecutionOrderAttribute.cs" t="Include" />
+                <e p="CMessenger.cs" t="Include" />
+                <e p="CMessengerAsync.cs" t="Include" />
+                <e p="EEventFilter.cs" t="Include" />
+                <e p="EventSystem.cs" t="Include" />
+                <e p="IEventSystem.cs" t="Include" />
+              </e>
+              <e p="Localization" t="Include">
+                <e p="CPersianConverter.cs" t="Include" />
+                <e p="ELanguagea.cs" t="Include" />
+                <e p="FSLocalizationConfig.cs" t="Include" />
+                <e p="FSTextSetting.cs" t="Include" />
+                <e p="ILocalization.cs" t="Include" />
+              </e>
+              <e p="Log" t="Include">
+                <e p="CLog.cs" t="Include" />
+              </e>
+              <e p="Operations" t="Include">
+                <e p="CallbackOperation.cs" t="Include" />
+                <e p="CallbackOperationE.cs" t="Include" />
+                <e p="CallbackOperationV.cs" t="Include" />
+                <e p="CallbackOperationVE.cs" t="Include" />
+                <e p="IOperation.cs" t="Include" />
+                <e p="IOperationE.cs" t="Include" />
+                <e p="IOperationObserver.cs" t="Include" />
+                <e p="IOperationObserverE.cs" t="Include" />
+                <e p="IOperationObserverV.cs" t="Include" />
+                <e p="IOperationObserverVE.cs" t="Include" />
+                <e p="IOperationV.cs" t="Include" />
+                <e p="IOperationVE.cs" t="Include" />
+                <e p="OperationAdaptorE.cs" t="Include" />
+                <e p="OperationAdaptorV.cs" t="Include" />
+                <e p="OperationAdaptorVE.cs" t="Include" />
+                <e p="OperationObserverAdaptor.cs" t="Include" />
+                <e p="OperationObserverAdaptorE.cs" t="Include" />
+                <e p="OperationObserverAdaptorV.cs" t="Include" />
+                <e p="OperationObserverAdaptorVE.cs" t="Include" />
+                <e p="OperationState.cs" t="Include" />
+                <e p="ParallelCompositeOperation.cs" t="Include" />
+                <e p="Result.cs" t="Include" />
+                <e p="ResultE.cs" t="Include" />
+                <e p="ResultState.cs" t="Include" />
+                <e p="ResultV.cs" t="Include" />
+                <e p="ResultVE.cs" t="Include" />
+                <e p="SequenceCompositeOperation.cs" t="Include" />
+              </e>
+              <e p="PoolingSystem" t="Include">
+                <e p="FPoolingSystem.cs" t="Include" />
+                <e p="IPoolingSystem.cs" t="Include" />
+              </e>
+              <e p="ResourceManagement" t="Include">
+                <e p="FResourceManagement.cs" t="Include" />
+                <e p="IResourceManagement.cs" t="Include" />
+              </e>
+              <e p="SaveSystem" t="Include">
+                <e p="ISaveSystem.cs" t="Include" />
+                <e p="SaveSystem.cs" t="Include" />
+              </e>
+              <e p="Service Locator" t="Include">
+                <e p="CServiceLocator.cs" t="Include" />
+              </e>
+              <e p="StateMachine" t="Include">
+                <e p="StateMachine.cs" t="Include" />
+              </e>
+              <e p="StateSystem" t="Include">
+                <e p="GenericState.cs" t="Include" />
+                <e p="IGenericState.cs" t="Include" />
+                <e p="IStateSystem.cs" t="Include" />
+                <e p="StateSystem.cs" t="Include" />
+              </e>
+              <e p="Util" t="Include">
+                <e p="IUtil.cs" t="Include" />
+                <e p="Time" t="Include">
+                  <e p="ISchedule.cs" t="Include" />
+                  <e p="Schedule.cs" t="Include" />
+                </e>
+                <e p="Util.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Utilities" t="Include">
+              <e p="AsyncAwait" t="Include">
+                <e p="Awaiters.cs" t="Include" />
+                <e p="AwaitExtensions.cs" t="Include" />
+                <e p="IEnumeratorAwaitExtensions.cs" t="Include" />
+                <e p="Internal" t="Include">
+                  <e p="SyncContextUtil.cs" t="Include" />
+                </e>
+                <e p="TaskExtensions.cs" t="Include" />
+                <e p="WaitForBackgroundThread.cs" t="Include" />
+                <e p="WaitForUpdate.cs" t="Include" />
+              </e>
+              <e p="Device.cs" t="Include" />
+              <e p="FCoroutineAgent.cs" t="Include" />
+              <e p="Math.cs" t="Include" />
+              <e p="MCalculateCompileTime.cs" t="Include" />
+              <e p="UtilStatic.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Revy.Framework.Attributes.Editor.csproj" t="IncludeRecursive" />
+      <e p="Revy.Framework.Core.Editor.csproj" t="IncludeRecursive" />
+      <e p="Revy.Framework.csproj" t="IncludeRecursive" />
+      <e p="Revy.Framework.ObjectsPool.Editor.csproj" t="IncludeRecursive" />
+      <e p="Revy.Framework.ScriptableObjectFactory.Editor.csproj" t="IncludeRecursive" />
+      <e p="Revy.Framework.ScriptTemplate.Editor.csproj" t="IncludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="zirkhaki_ideen_ws.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

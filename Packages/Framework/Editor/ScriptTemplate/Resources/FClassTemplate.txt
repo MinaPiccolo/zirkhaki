@@ -1,0 +1,23 @@
+﻿using UnityEngine;
+using Revy.Framework;
+
+namespace MyNamespace
+{
+	public class #ClassName# : FClass
+	{
+		#region Fields
+        #endregion Fields
+
+		#region Properties
+        #endregion Properties
+
+        #region Public Methods
+        #endregion Public Methods
+
+        #region FComponent's Callbacks       
+        #endregion FComponent's Callbacks
+
+        #region Helpers     
+        #endregion Helpers
+	}
+}
