@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ObstacleObj : MonoBehaviour
 {
-    public int scratchToDrop;
+  //  public int scratchToDrop;
     private bool isMouseDwn = false, isMouseDrag = false;
     private int count = 0;
 
     private Ray ray;
     private RaycastHit hit;
+
+    public ObstacleData ObstacleInfoObj;
 
 
     void OnMouseDown()
@@ -23,16 +25,17 @@ public class ObstacleObj : MonoBehaviour
 
     void OnMouseExit()
     {
-        scratchCount();
+        ScratchObstacle();
     }
 
-    void scratchCount()
+    void ScratchObstacle()
     {
+        //Debug.Log(isMouseDrag);
         if (isMouseDwn && isMouseDrag)
             count++;
-        if (count >= scratchToDrop)
+        if (count >= ObstacleInfoObj.NumberScrachToDestroy)
         {
-            ItemController.Instance.generateItem(0,new Vector2(transform.position.x, transform.position.y+0.2f));
+            ItemController.Instance.GenerateItem(0,new Vector2(transform.position.x, transform.position.y+0.2f));
             SimplePool.Despawn(gameObject);
         }
     }

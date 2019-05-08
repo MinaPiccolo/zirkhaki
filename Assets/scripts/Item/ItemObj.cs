@@ -5,26 +5,34 @@ using UnityEngine.UI;
 
 public class ItemObj : MonoBehaviour
 {
-    public int index;
-    public int type;
-    void Start()
-    {
-  //      GetComponent<Button>().onClick.AddListener(() => { onClickGameObj(); });
-    }
+    public int ItemId;
+    public EItemType ItemType;
+    public string ItemName;
+    public int PiecesCount;
+    public int FoundPieces;
+    //public int index;
+    //public int type;
+    //void Start()
+    //{
+    //}
+    //void Update()
+    //{
 
-    public void collectItems()
+    //}
+
+    void OnMouseDown()
     {
+        OnClickItem();
     }
-    void onClickGameObj()
+    void OnClickItem()
     {
-        if (Player.Instance.checkInventoryFull() != -1)
-        {
-            Player.Instance.putToInventory(type);
-            SimplePool.Despawn(gameObject);
-        }
+        //int findEmptySlot = Player.Instance.FindEpmtySlot();
+        //if (findEmptySlot == -1)
+        //    return;
+        //Player.Instance.PutItemToInventory(type, findEmptySlot);
+
+        Player.Instance.AddItemToInventory(ItemId, ItemType, ItemName, PiecesCount, FoundPieces);
+        SimplePool.Despawn(gameObject);
     }
-    void Update()
-    {
-        
-    }
+  
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: mapData
   m_EditorClassIdentifier: 
   StatesList:
-  - StateId: 0
+  - StateId: 10
     RequiredFame: 0
     LevelsList:
     - LevelId: 0
@@ -25,19 +25,23 @@ MonoBehaviour:
       timeLvl: 0
       RegionsList:
       - RegionId: 0
-        LocationRegion: {fileID: 0}
+        LocationRegion: {fileID: 5442888218113703112, guid: 91a92ab88c581c44bbc3ae6ceb9ead9f,
+          type: 3}
         SpriteRegionImg: 
         ObstaclesList:
         - ObstacleId: 0
-          LocationObstacle: {fileID: 0}
+          LocationObstacle: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
+            type: 3}
           TypeObstacle: 0
-          NumberScrachToDestroy: 0
+          NumberScrachToDestroy: 5
+        - ObstacleId: 0
+          LocationObstacle: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
+            type: 3}
+          TypeObstacle: 1
+          NumberScrachToDestroy: 4
       - RegionId: 0
-        LocationRegion: {fileID: 0}
-        SpriteRegionImg: 
-        ObstaclesList: []
-      - RegionId: 0
-        LocationRegion: {fileID: 0}
+        LocationRegion: {fileID: 2334317213417037123, guid: dd1fba338bbcc024ab1f7e74a810d1ae,
+          type: 3}
         SpriteRegionImg: 
         ObstaclesList: []
       ItemsList:

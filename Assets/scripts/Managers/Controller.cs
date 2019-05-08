@@ -23,11 +23,11 @@ public class Controller : MonoBehaviour
     {
         
     }
-    public GameObject generateGameObj(GameObject prebab,Transform parent)
+    public GameObject generateGameObj(Transform prefab,Transform parent)
     {
-        GameObject go = SimplePool.Spawn(prebab, Vector3.zero, Quaternion.identity);
-        go.transform.SetParent(parent, false);
-        go.transform.localPosition = Vector3.zero;
+        GameObject go = SimplePool.Spawn(prefab.gameObject, Vector3.zero, Quaternion.identity); 
+        go.transform.SetParent(parent, prefab);
+        go.transform.position = prefab.position;
         return go;
     }
 }

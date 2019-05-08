@@ -19,12 +19,15 @@ public class ItemController : MonoBehaviour
 
     }
 
-    public void generateItem(int itemObjIndex,Vector2 pos)
+    public void GenerateItem(int itemObjIndex,Vector2 pos)
     {
-        GameObject item = Controller.Instance.generateGameObj(itemsGo[itemObjIndex], parentItems);
-        item.transform.position = new Vector2(pos.x, pos.y + 1);
-        item.GetComponent<ItemObj>().index = itemObjIndex;
-        item.GetComponent<ItemObj>().type = itemObjIndex + 1;
+        //GameObject item = Controller.Instance.generateGameObj(itemsGo[itemObjIndex], parentItems);
+        //item.transform.position = new Vector2(pos.x, pos.y + 1);
+
+        //item.GetComponent<ItemObj>().ItemId = itemObjIndex;
+        //item.GetComponent<ItemObj>().ItemType = EItemType.Junk;
+        //item.GetComponent<ItemObj>().ItemName = "";
+        //item.GetComponent<ItemObj>().PiecesCount = 4;
     }
    
     void Update()

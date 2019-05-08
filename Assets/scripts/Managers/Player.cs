@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int[] inventory;
+    public List<InventoryItem> Inventory;
 
     public static Player Instance { get; private set; }
 
@@ -13,36 +13,33 @@ public class Player : MonoBehaviour
         Instance = this;
     }
 
-    //public int CheckInventoryFull
-    //{
-    //    get {return checkInventoryFull(); }
-    //}
 
     void Start()
     {
-        
+        Inventory = new List<InventoryItem>();
     }
-    public void putToInventory(int indexItem)
+    //public void PutItemToInventory(int indexItem, int findEmptySlot)
+    //{
+    //    Inventory[findEmptySlot] = indexItem;
+    //    HUD.Instance.showInventory();
+    //}
+    public void AddItemToInventory(int itemId, EItemType itemType,string itemName,int piecesCount,int foundPieces)
     {
-        int findEmptySlot = checkInventoryFull();
-        if (findEmptySlot !=-1)
-        {
-            inventory[findEmptySlot] = indexItem;
+        InventoryItem item;
+        item.ItemId = itemId;
+        item.ItemType = itemType;
+        item.ItemName = itemName;
+        item.PiecesCount = piecesCount;
+        item.FoundPieces = foundPieces;
+        Inventory.Add(item);
+    }
+//public int FindEpmtySlot()
+//    {
+//        for (int i = 0; i < Inventory.Count; i++)
+//            if (Inventory[i] == 0)
+//                return i;
 
-        }
-        HUD.Instance.showInventory();
-    }
-  public int checkInventoryFull()
-    {
-        for (int i = 0; i < inventory.Length; i++)
-            if (inventory[i] == 0)
-                return i;
-
-        return -1;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+//        return -1;
+//    }
+  
 }
