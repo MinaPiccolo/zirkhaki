@@ -7,18 +7,18 @@ public class makeStateScribtaleObj
 {
 
 
-    [MenuItem("zirkhaki/Scriptable Objects/Map Data")]
-    public static void CreateMyAsset()
-    {
-        var asset = ScriptableObject.CreateInstance<MapData>();
+    //[MenuItem("zirkhaki/Scriptable Objects/Map Data")]
+    //public static void CreateMyAsset()
+    //{
+    //    var asset = ScriptableObject.CreateInstance<MapData>();
 
-        AssetDatabase.CreateAsset(asset, "Assets/scriptableObjects/mapData.asset");
-        AssetDatabase.SaveAssets();
+    //    AssetDatabase.CreateAsset(asset, "Assets/scriptableObjects/mapData.asset");
+    //    AssetDatabase.SaveAssets();
 
-        EditorUtility.FocusProjectWindow();
+    //    EditorUtility.FocusProjectWindow();
 
-        Selection.activeObject = asset;
-    }
+    //    Selection.activeObject = asset;
+    //}
 
    // [MenuItem("zirkhaki/Scriptable Objects/City Data")]
     //public static void CreateMyAsset1()

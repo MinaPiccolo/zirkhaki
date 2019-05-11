@@ -11,15 +11,16 @@ public class mainMenu : MonoBehaviour
     void Start()
     {
       //  startGame.onClick.AddListener(() => { onClickStartGame(); });
-        LvlBtn.onClick.AddListener(() => { OnClickLvlBtn(); });
+        LvlBtn.onClick.AddListener(() => { OnClickLvlBtn(0); });
     }
 
     //void onClickStartGame()
     //{
     //    mapPnl.SetActive(true);
     //}
-    void OnClickLvlBtn()
+    void OnClickLvlBtn(int index)
     {
+        LvlController.Instance.CurrentLevelIndex = index;
         SceneManager.LoadScene("gameScene");
     }
     void Update()

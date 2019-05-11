@@ -1,5 +1,5 @@
 ﻿public enum EObstacleType
 {
-    shovel,
-    brush
+    stone,
+    hill
 }

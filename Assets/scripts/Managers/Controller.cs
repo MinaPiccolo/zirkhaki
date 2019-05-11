@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    public GameObject HUDGo;
+    public Camera CamGame;
     public static Controller Instance { get; private set; }
 
     void Awake()
@@ -17,8 +19,12 @@ public class Controller : MonoBehaviour
             PlayerPrefs.SetInt("intVar", 1);
         }
     }
+    public void InitialMainGame()
+    {
+        HUDGo.SetActive(true);
+        ToolController.Instance.InitialHUDLvl();
+    }
 
-    // Update is called once per frame
     void Update()
     {
         

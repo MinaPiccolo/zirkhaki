@@ -6,14 +6,17 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     public Text inv;
-
+   
     public static HUD Instance { get; private set; }
 
     void Awake()
     {
         Instance = this;
     }
-
+    void OnEnable()
+    {
+     
+    }
     void Start()
     {
         
@@ -26,6 +29,7 @@ public class HUD : MonoBehaviour
             inv.text += Player.Instance.Inventory[i] + "/";
         }
     }
+  
     void Update()
     {
         

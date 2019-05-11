@@ -9,13 +9,11 @@ public class RegionObj : MonoBehaviour
     {
     }
 
-    void OnMouseDown()///2 bar seda zade mishe???????????????
+    void OnMouseDown()
     {
-       // if (gameObject == RegionController.Instance.RegionGo[RegionInfoObj.RegionId])
-        {
-            ObstacleController.Instance.generateObstacle(RegionInfoObj.RegionId);
-            transform.parent.gameObject.SetActive(false);
-        }
+        Controller.Instance.InitialMainGame();
+        ObstacleController.Instance.generateObstacle(RegionInfoObj.RegionId);
+        transform.parent.gameObject.SetActive(false);
     }
     void Update()
     {

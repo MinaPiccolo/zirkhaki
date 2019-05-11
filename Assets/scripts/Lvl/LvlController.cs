@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class LvlController : MonoBehaviour
 {
+    public int CurrentLevelIndex;
+    public static LvlController Instance { get; private set; }
+
+    void Awake()
+    {
+        Instance = this;
+    }
     //public Transform RegionParent;
     //void Start()
     //{

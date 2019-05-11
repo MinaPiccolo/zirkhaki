@@ -52,8 +52,16 @@ MonoBehaviour:
         - NameMainItem: 
           IncomeCurrency: 0
           NumberOfPices: 0
+        - NameMainItem: 
+          IncomeCurrency: 0
+          NumberOfPices: 0
+        - NameMainItem: 
+          IncomeCurrency: 0
+          NumberOfPices: 0
         RareItemsList:
         - NameRareItem: 
           IncomeCurrency: 0
           NumberOfPices: 0
         NumberJunkItems: 10
+        ItemLocation: {fileID: 6057026035800120060, guid: b2b8a5df60c3ac047a27168c1dfe7e2b,
+          type: 3}

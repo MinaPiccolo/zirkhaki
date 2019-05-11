@@ -6,6 +6,7 @@ public class ObstacleController : MonoBehaviour
 {
     public GameObject ParentObstacle, ObstacleGO;
     public Transform ObstacleParent;
+   // public List<ObstacleData> obstacleList;
   //  public List<GameObject> ObstacleGo;
     public static ObstacleController Instance { get; private set; }
 
@@ -27,8 +28,6 @@ public class ObstacleController : MonoBehaviour
     public void generateObstacle(int idRegion)
     {
         List<ObstacleData> obstacleList = LoadData.Instance.RegionInfo[idRegion].ObstaclesList;
-        Debug.Log(obstacleList.Count);
-       // ObstacleGo.Clear();
         for (int i = 0; i < obstacleList.Count; i++)
         {
             GameObject obstacle = Controller.Instance.generateGameObj(obstacleList[i].LocationObstacle, ObstacleParent);

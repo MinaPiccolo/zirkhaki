@@ -8,5 +8,6 @@ public struct ItemsData
     public List<MainItemsData> MainItemsList;
     public List<RareItemsData> RareItemsList;
     public int NumberJunkItems;
+    public Transform ItemLocation;
 
 }

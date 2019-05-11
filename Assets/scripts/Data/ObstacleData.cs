@@ -7,5 +7,6 @@ public struct ObstacleData
     public int ObstacleId;
     public Transform LocationObstacle;
     public EObstacleType TypeObstacle;
+    public EToolsType UseTool;
     public int NumberScrachToDestroy;
 }
