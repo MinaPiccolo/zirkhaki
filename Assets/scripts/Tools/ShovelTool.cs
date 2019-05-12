@@ -4,46 +4,63 @@ using UnityEngine;
 
 public class ShovelTool : Tools
 {
-    //private bool isMouseDwn = false, isMouseDrag = false;
+    private int count = 0;
     private void OnEnable()
     {
         ToolController.ChangePositionEvent += ChangePosition;
+        ObstacleObj.ObstacleHitEvent += ObstacleHited;
+        //ObstacleObj.ObstacleHitEndEvent += ObstacleHitEnd;
     }
+    void ObstacleHited(ObstacleData ObstacleType,GameObject go)
+    {
+        if (ToolController.Instance.selectTool == EToolsType.shovel)
+            if (ObstacleType.UseTool == ToolType)
+            {
+                Debug.Log("HitClick");
+
+                count++;
+                if (count >= ObstacleType.NumberScrachToDestroy)
+                {
+                    Debug.Log("Finally Obstacle Hited");
+                    DestroyObstacle(go);
+                }
+            }
+
+
+        //GetComponent<Collider2D>().enabled = true;
+        // Debug.Log(ObstacleType);
+    }
+    //void ObstacleHitEnd()
+    //{
+    //    GetComponent<Collider2D>().enabled = true;
+    //}
     void OnMouseDown()
     {
-        BehaviourTool();
-      //  isMouseDwn = true;
+
+       
+
+        GetComponent<Collider2D>().enabled = false;
+        ToolHit(ToolType, gameObject);
     }
-    //void OnMouseDrag()
-    //{
-    //    if (ToolController.Instance.selectTool == ToolType)
-    //    {
-    //        Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-    //        //pos.Set(pos.x, transform.position.z, pos.y);
-    //        transform.position = pos;
-    //    }
-    //    else
-    //        transform.position = new Vector3(0, -10, 0);
-    //}
-    //void OnMouseDrag()
-    //{
-    //    isMouseDrag = true;
-    //}
-
-    //void OnMouseExit()
-    //{
-    //}
-
-    public override void BehaviourTool()
-    {
-        // base.BehaviourTool();
-        UseTool();
-    }
-
+   
     public void ChangePosition(Vector2 pos)
     {
+
+        //RaycastHit hit;
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        ////  Debug.Log(ray.direction);
+        //Physics.Raycast(ray, out hit, 1000);
+        //// Debug.Log(hit.collider);
+        //// if (Physics.Raycast(ray, out hit))
+        //{
+        //    Debug.Log(hit.transform.name);
+        //}
+
+
         if (ToolController.Instance.selectTool == ToolType)
             transform.position = pos;
+        else
+            transform.position = new Vector3(0, -10, 0);
     }
 
    

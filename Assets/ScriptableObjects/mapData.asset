@@ -33,11 +33,13 @@ MonoBehaviour:
           LocationObstacle: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
             type: 3}
           TypeObstacle: 0
+          UseTool: 0
           NumberScrachToDestroy: 5
         - ObstacleId: 0
           LocationObstacle: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
             type: 3}
           TypeObstacle: 1
+          UseTool: 1
           NumberScrachToDestroy: 4
       - RegionId: 0
         LocationRegion: {fileID: 2334317213417037123, guid: dd1fba338bbcc024ab1f7e74a810d1ae,

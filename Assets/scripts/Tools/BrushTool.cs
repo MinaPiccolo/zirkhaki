@@ -4,42 +4,42 @@ using UnityEngine;
 
 public class BrushTool : Tools
 {
-    private bool isMouseDwn = false, isMouseDrag = false;
+    private int count = 0;
     private void OnEnable()
     {
         ToolController.ChangePositionEvent += ChangePosition;
+        ObstacleObj.ObstacleHitEvent += ObstacleHited;
+    }
+    void ObstacleHited(ObstacleData ObstacleType, GameObject go)
+    {
+        if (ToolController.Instance.selectTool == EToolsType.brush)
+            if (ObstacleType.UseTool == ToolType)
+        {
+            Debug.Log("HitClick");
+
+            count++;
+            if (count >= ObstacleType.NumberScrachToDestroy)
+            {
+                Debug.Log("Finally Obstacle Hited");
+                DestroyObstacle(go);
+            }
+        }
+
+
+        //GetComponent<Collider2D>().enabled = true;
+        // Debug.Log(ObstacleType);
     }
     void OnMouseDown()
     {
-        isMouseDwn = true;
+        GetComponent<Collider2D>().enabled = false;
+        ToolHit(ToolType,gameObject);
     }
-    void OnMouseDrag()
-    {
-        isMouseDrag = true;
-        //if (ToolController.Instance.selectTool == ToolType)
-        //    transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //else
-        //    transform.position = new Vector3(0, -10, 0);
-
-    }
-
-    void OnMouseExit()
-    {
-        BehaviourTool();
-    }
-
-    public override void BehaviourTool()
-    {
-        // base.BehaviourTool();
-        if (isMouseDwn && isMouseDrag)
-        {
-            UseTool();
-        }
-    }
-
+ 
     public void ChangePosition(Vector2 pos)
     {
         if (ToolController.Instance.selectTool == ToolType)
             transform.position = pos;
+        else
+            transform.position = new Vector3(0, -10, 0);
     }
 }

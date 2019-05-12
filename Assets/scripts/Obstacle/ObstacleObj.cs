@@ -5,29 +5,34 @@ using UnityEngine.AddressableAssets;
 
 public class ObstacleObj : MonoBehaviour
 {
-  //  public int scratchToDrop;
-   // private bool isMouseDwn = false, isMouseDrag = false;
+    private bool isMouseDwn = false, isMouseDrag = false;
     private int count = 0;
+    private EToolsType ToolTypeClicked=EToolsType.non;
+    private GameObject ToolGoClicked;
 
-    //private Ray ray;
-    //private RaycastHit hit;
-
+    public delegate void ActionObstacleHit(ObstacleData ObstacleInfo,GameObject Go);
+    public static event ActionObstacleHit ObstacleHitEvent;
 
     public ObstacleData ObstacleInfoObj;
-
+    
     void OnEnable()
     {
-        Tools.UseToolEvent += Hitable;
-        Addressables.LoadAsset<Sprite[]>("Stone").Completed += LoadCompleted;
-       // Addressables.LoadAsset<Sprite>("Hill").Completed += LoadCompleted;
-       
+        Addressables.LoadAssets<Sprite>("Obstacle", null).Completed += LoadCompleted;
+        Tools.DestroyOstacleEvent += DestroyObs;
+       // Tools.ToolHitEvent += ToolHit;
     }
-    void LoadCompleted(AsyncOperationHandle<Sprite[]> spAs)
+    //void ToolHit(EToolsType ToolType,GameObject ToolGo)
+    //{
+    //    ToolTypeClicked = ToolType;
+    //    ToolGoClicked = ToolGo;
+    //}
+
+    void LoadCompleted(AsyncOperationHandle<IList<Sprite>> spAs)
     {
-        Debug.Log(spAs.Result.Length);
-        for (int i = 0; i < spAs.Result.Length; i++)
+        //Debug.Log(spAs.Result[0].name);
+        for (int i = 0; i < spAs.Result.Count; i++)
         {
-            Debug.Log(spAs.Result[i].name);
+            // Debug.Log(spAs.Result[i].name);
             if (spAs.Result[i].name == "Stone")
             {
                 SetSpritBaseOnType(EObstacleType.stone, spAs.Result[i]);
@@ -38,81 +43,71 @@ public class ObstacleObj : MonoBehaviour
             }
         }
     }
-    void SetSpritBaseOnType(EObstacleType obctacleType,Sprite sp)
+    void SetSpritBaseOnType(EObstacleType obctacleType, Sprite sp)
     {
         if (ObstacleInfoObj.TypeObstacle == obctacleType)
             GetComponent<SpriteRenderer>().sprite = sp;
     }
-        //void OnMouseDown()
-        //{
-        //    isMouseDwn = true;
-        //}
-        //void OnMouseDrag()
-        //{
-        //    isMouseDrag = true;
-        //}
-
-        //void OnMouseExit()
-        //{
-        //    ScratchObstacle();
-        //}
-
-        //void ScratchObstacle()
-        //{
-        //    if (ObstacleInfoObj.UseTool == EToolsType.shovel)
-        //    {
-        //        if (isMouseDwn && isMouseDrag)
-        //            count++;
-        //        if (count >= ObstacleInfoObj.NumberScrachToDestroy)
-        //        {
-        //            ItemController.Instance.GenerateItem(transform.position);
-        //            SimplePool.Despawn(gameObject);
-        //        }
-        //    }
-        //    else if (ObstacleInfoObj.UseTool == EToolsType.brush)
-        //    {
-        //        if (isMouseDwn && isMouseDrag)
-        //            count++;
-        //        if (count >= ObstacleInfoObj.NumberScrachToDestroy)
-        //        {
-        //            ItemController.Instance.GenerateItem(transform.position);
-        //            SimplePool.Despawn(gameObject);
-        //        }
-        //    }
-
-        //}
-
-
-
-        void Hitable(EToolsType ToolType)
-    {
-        Debug.Log("omad");
-        Debug.Log(ToolType);
-        if (ObstacleInfoObj.UseTool == ToolType)
-        {
-            count++;
-            if (count >= ObstacleInfoObj.NumberScrachToDestroy)
-            {
-                ItemController.Instance.GenerateItem(transform.position);
-                SimplePool.Despawn(gameObject);
-            }
-
-            Debug.Log("hit");
-        }
-        else
-            Debug.Log("wrongTool");
-    }
 
    
+    void OnMouseDown()
+    {
+        isMouseDwn = true;
+        if (ObstacleInfoObj.UseTool == EToolsType.shovel)
+            CheckHitObstacle();
+    }
+    void OnMouseDrag()
+    {
+        isMouseDrag = true;
+    }
 
-    // Update is called once per frame
-    void Update()
+    void OnMouseExit()
+    {
+        ScratchObstacle();
+    }
+
+    void ScratchObstacle()
     {
 
-        //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //if (Physics.Raycast(ray,out hit))
-        //{
-        //    Debug.Log(hit.collider.name);
-        //}
+        if (ObstacleInfoObj.UseTool == EToolsType.brush)
+        {
+            if (isMouseDwn && isMouseDrag)
+                CheckHitObstacle();
+            //    count++;
+            //if (count >= ObstacleInfoObj.NumberScrachToDestroy)
+            //{
+            //    ItemController.Instance.GenerateItem(transform.position);
+            //    SimplePool.Despawn(gameObject);
+            //}
+        }
+       
+
     }
+
+    void CheckHitObstacle()
+    {
+        ObstacleHitEvent(ObstacleInfoObj,gameObject);
+        // Debug.Log(ToolTypeClicked);
+    //    if (ObstacleInfoObj.UseTool == ToolTypeClicked)
+    //    {
+    //        Debug.Log("HitClick");
+          
+    //        count++;
+    //        if (count >= ObstacleInfoObj.NumberScrachToDestroy)
+    //        {
+    //            //ObstacleHitEndEvent();
+    //            Debug.Log("Finally Obstacle Hited");
+    //            ItemController.Instance.GenerateItem(transform.position);
+    //            SimplePool.Despawn(gameObject);
+    //        }
+    //    }
+        
+    }
+
+    void DestroyObs(GameObject Go)
+    {
+        ItemController.Instance.GenerateItem(Go.transform.position);
+        SimplePool.Despawn(Go);
+    }
+
 }

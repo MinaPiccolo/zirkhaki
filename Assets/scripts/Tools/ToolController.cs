@@ -8,7 +8,7 @@ public class ToolController : MonoBehaviour
 {
     public Button[] ToolsBtn;
     public string[] ToolsName;
-    public EToolsType selectTool;
+    public EToolsType selectTool= EToolsType.non;
     private bool isMoveTool;
 
     public delegate void ActionChangePositon(Vector2 pos);
@@ -64,7 +64,7 @@ public class ToolController : MonoBehaviour
                 return EToolsType.brush;
 
             default:
-                return EToolsType.shovel;
+                return EToolsType.non;
         }
 
     }

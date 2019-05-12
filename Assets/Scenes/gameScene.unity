@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 1018528264}
   - component: {fileID: 1018528265}
   - component: {fileID: 1018528266}
+  - component: {fileID: 1018528267}
   m_Layer: 0
   m_Name: controller
   m_TagString: Untagged
@@ -609,6 +610,18 @@ MonoBehaviour:
   - Shovel
   - Brush
   selectTool: 0
+--- !u!114 &1018528267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018528258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5116d7f98e0263c48bafe17211b4ecb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1283931883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,6 +1518,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 102145184336315232, guid: 2de1b32b87719124889975380ed43d03,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2de1b32b87719124889975380ed43d03, type: 3}
 --- !u!4 &4603459505310353798 stripped
@@ -1584,6 +1602,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053231855311396168, guid: 300cbaafb212d964ab6e87719509169b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 300cbaafb212d964ab6e87719509169b, type: 3}

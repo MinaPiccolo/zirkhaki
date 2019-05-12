@@ -16,14 +16,9 @@ public class ObstacleController : MonoBehaviour
     }
     void Start()
     {
-       // generateObstacle(5, 10);
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
+    
 
     public void generateObstacle(int idRegion)
     {
@@ -32,8 +27,10 @@ public class ObstacleController : MonoBehaviour
         {
             GameObject obstacle = Controller.Instance.generateGameObj(obstacleList[i].LocationObstacle, ObstacleParent);
             //ObstacleGo.Add(obstacle);
+          //  obstacle.GetComponent<ObstacleObj>().HitObstacleEvent += Tools.Hitable;
             Vector3 pos=  obstacle.transform.position;
-            pos.x += i;
+            pos.x += i*2;
+            pos.y -= i * 2;
             obstacle.transform.position=pos;
             ObstacleObj script = obstacle.AddComponent<ObstacleObj>();
             script.ObstacleInfoObj = obstacleList[i];
