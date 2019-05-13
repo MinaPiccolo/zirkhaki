@@ -8,7 +8,7 @@ public class InventoryController : MonoBehaviour
     public Text MainInventoryText,RareInventoryText,JunkInventoryText;
     public int JunkInventoryRemoveAt;
     public List<InventoryItem> MainInventory,RareInventory,JunkInventory;
-
+    string invMain, invRar, invJunk;
     public static InventoryController Instance { get; private set; }
 
     void Awake()
@@ -19,56 +19,66 @@ public class InventoryController : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.GetInt("createInventoriesOnce") == 0)
-        {
-            PlayerPrefs.SetInt("createInventoriesOnce", 1);
-            MainInventory = new List<InventoryItem>();
-            RareInventory = new List<InventoryItem>();
-            JunkInventory = new List<InventoryItem>();
-        }
+        MainInventory = new List<InventoryItem>();
+        RareInventory = new List<InventoryItem>();
+        JunkInventory = new List<InventoryItem>();
+        ShowMainInventory();
+        ShowRareInventory();
+        ShowJunkInventory();
+        convertListToSt();
     }
 
     #region AddItems
-    public void AddMainItem(ItemsData itemInfo)
+    public void AddMainItem(MainItemsData mainItemsInfo,int itemId)
     {
         InventoryItem item;
-        item.ItemId = 1;
+        item.ItemId = itemId;
         item.ItemType = EItemType.Main;
-        item.ItemName = "D";
-        item.PiecesCount = 10;
-        item.FoundPieces = 1;// "item"+1;
+        item.ItemName = mainItemsInfo.NameMainItem;
+        item.PiecesCount = mainItemsInfo.NumberOfPices;
+        item.FoundPieces = mainItemsInfo.NumberOfFound;
         item.IsCompleted = CheckPiecesComplete(item.PiecesCount, item.FoundPieces);
         MainInventory.Add(item);
         if (item.IsCompleted)
             DoStuffCompeletedPieces();
+
+        convertListToSt();
+        ShowMainInventory();
     }
-    public void AddRareItem(ItemsData itemInfo)
+    public void AddRareItem(RareItemsData rareItemInfo,int itemId)
     {
         InventoryItem item;
-        item.ItemId = 1;
+        item.ItemId = itemId;
         item.ItemType = EItemType.Rare;
-        item.ItemName = "D";
-        item.PiecesCount = 10;
-        item.FoundPieces = 1;// "item"+1;
+        item.ItemName = rareItemInfo.NameRareItem;
+        item.PiecesCount = rareItemInfo.NumberOfPices;
+        item.FoundPieces = rareItemInfo.NumberOfFound;
         item.IsCompleted = CheckPiecesComplete(item.PiecesCount, item.FoundPieces);
         MainInventory.Add(item);
         if (item.IsCompleted)
             DoStuffCompeletedPieces();
+
+        convertListToSt();
+        ShowRareInventory();
     }
 
-    public void AddJunkItem(ItemsData itemInfo)
+    public void AddJunkItem(int itemId)
     {
         if (CheckJunkInventoryIsFull())
             RemoveJunkItem();
 
         InventoryItem item;
-        item.ItemId = 1;
+        item.ItemId = itemId;
         item.ItemType = EItemType.Junk;
-        item.ItemName = "D";
+        item.ItemName = "junk";
         item.PiecesCount = 0;
         item.FoundPieces = 0;
         item.IsCompleted = true;
         MainInventory.Add(item);
+
+        convertListToSt();
+        ShowJunkInventory();
+
     }
     #endregion
 
@@ -120,15 +130,15 @@ public class InventoryController : MonoBehaviour
     #region UI
     void ShowMainInventory()
     {
-        ShowInventory(MainInventory, MainInventoryText);
+       // ShowInventory(MainInventory, MainInventoryText);
     }
     void ShowRareInventory()
     {
-        ShowInventory(RareInventory,RareInventoryText);
+      //  ShowInventory(RareInventory,RareInventoryText);
     }
     void ShowJunkInventory()
     {
-        ShowInventory(JunkInventory,JunkInventoryText);
+       // ShowInventory(JunkInventory,JunkInventoryText);
     }
     void ShowInventory(List<InventoryItem> inventory,Text inventoryText)
     {
@@ -138,4 +148,31 @@ public class InventoryController : MonoBehaviour
         }
     }
     #endregion
+    void convertListToSt()
+    {
+        invMain = "";
+        invRar = "";
+        invJunk = "";
+        for (int i = 0; i < MainInventory.Count; i++)
+            invMain += MainInventory[i].ItemId + ",";
+
+        for (int i = 0; i < RareInventory.Count; i++)
+            invRar += RareInventory[i].ItemId + ",";
+
+        for (int i = 0; i < JunkInventory.Count; i++)
+            invJunk += JunkInventory[i].ItemId + ",";
+
+
+    }
+    void OnGUI()
+    {
+        GUI.color = Color.red;
+        GUIStyle myStyle = new GUIStyle();
+        myStyle.normal.textColor = Color.red;
+        myStyle.fontSize = 100;
+        GUI.Label(new Rect(10, 300, 400, 100), invMain + " invM", myStyle);
+        GUI.Label(new Rect(10, 400, 400, 100), invRar + " invR", myStyle);
+        GUI.Label(new Rect(10, 500, 400, 100), invJunk + " invj ", myStyle);
+
+    }
 }

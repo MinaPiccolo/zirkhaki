@@ -106,7 +106,6 @@ public class ObstacleObj : MonoBehaviour
 
     void DestroyObs(GameObject Go)
     {
-        ItemController.Instance.GenerateItem(Go.transform.position);
         SimplePool.Despawn(Go);
     }
 

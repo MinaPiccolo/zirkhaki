@@ -9,59 +9,37 @@ public class ShovelTool : Tools
     {
         ToolController.ChangePositionEvent += ChangePosition;
         ObstacleObj.ObstacleHitEvent += ObstacleHited;
-        //ObstacleObj.ObstacleHitEndEvent += ObstacleHitEnd;
     }
     void ObstacleHited(ObstacleData ObstacleType,GameObject go)
     {
         if (ToolController.Instance.selectTool == EToolsType.shovel)
             if (ObstacleType.UseTool == ToolType)
             {
-                Debug.Log("HitClick");
-
+                Debug.Log("HitOnstacle");
                 count++;
                 if (count >= ObstacleType.NumberScrachToDestroy)
                 {
-                    Debug.Log("Finally Obstacle Hited");
-                    DestroyObstacle(go);
+                    StuffDestroyObstacle(go);
                 }
             }
-
-
-        //GetComponent<Collider2D>().enabled = true;
-        // Debug.Log(ObstacleType);
     }
-    //void ObstacleHitEnd()
+    //void StuffDestroyObstacle(GameObject go)
     //{
-    //    GetComponent<Collider2D>().enabled = true;
+    //    Debug.Log("Obstacle Destroy");
+    //    ToolController.Instance.PutTool();
+    //    ItemController.Instance.GenerateItem(LvlController.Instance.TempeItemsListInfo);
+    //    DestroyObstacle(go);
     //}
     void OnMouseDown()
     {
-
-       
-
         GetComponent<Collider2D>().enabled = false;
         ToolHit(ToolType, gameObject);
     }
-   
     public void ChangePosition(Vector2 pos)
     {
-
-        //RaycastHit hit;
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        ////  Debug.Log(ray.direction);
-        //Physics.Raycast(ray, out hit, 1000);
-        //// Debug.Log(hit.collider);
-        //// if (Physics.Raycast(ray, out hit))
-        //{
-        //    Debug.Log(hit.transform.name);
-        //}
-
-
         if (ToolController.Instance.selectTool == ToolType)
             transform.position = pos;
         else
             transform.position = new Vector3(0, -10, 0);
     }
-
-   
 }

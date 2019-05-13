@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class ItemObj : MonoBehaviour
 {
-
-    public ItemsData ItemInfoObj;
+    public int ItemId;
+    public EItemType ItemType;
+    public MainItemsData MainItemsInfo;
+    public RareItemsData RareItemsInfo;
+    //public ItemsData ItemInfoObj;
 
     //public int ItemId;
     //public EItemType ItemType;
@@ -29,12 +32,21 @@ public class ItemObj : MonoBehaviour
     }
     void OnClickItem()
     {
-        //int findEmptySlot = Player.Instance.FindEpmtySlot();
-        //if (findEmptySlot == -1)
-        //    return;
-        //Player.Instance.PutItemToInventory(type, findEmptySlot);
+        if(ItemType==EItemType.Main)
+        {
+            MainItemsInfo.NumberOfFound++;
+            InventoryController.Instance.AddMainItem(MainItemsInfo, ItemId);
+        }
+        else if (ItemType == EItemType.Rare)
+        {
+            RareItemsInfo.NumberOfFound++;
+            InventoryController.Instance.AddRareItem(RareItemsInfo,ItemId);
+        }
+        else if (ItemType == EItemType.Junk)
+        {
+            InventoryController.Instance.AddJunkItem(ItemId);
+        }
 
-        //InventoryController.Instance.AddItemToInventory(ItemInfoObj);//ItemId, ItemType, ItemName, PiecesCount, FoundPieces);
         SimplePool.Despawn(gameObject);
     }
   

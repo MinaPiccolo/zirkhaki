@@ -39,15 +39,24 @@ public class ToolController : MonoBehaviour
     void OnclickToolBtn(int index)
     {
         selectTool = ConvertInexToEnumType(index);
+        ResetColorToolBtns();
+        ToolsBtn[index].GetComponent<Image>().color = Color.blue;
+        TakeTool();
+    }
+    void ResetColorToolBtns()
+    {
         for (int i = 0; i < ToolsBtn.Length; i++)
             ToolsBtn[i].GetComponent<Image>().color = Color.white;
-        ToolsBtn[index].GetComponent<Image>().color = Color.blue;
-
-        TakeTool();
     }
     void TakeTool()
     {
         isMoveTool = true;
+    }
+    public void PutTool()
+    {
+        selectTool = EToolsType.non;
+        ResetColorToolBtns();
+       // isMoveTool = false;
     }
     void Update()
     {

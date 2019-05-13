@@ -8,4 +8,5 @@ public struct MainItemsData
     public string NameMainItem;
     public int IncomeCurrency;
     public int NumberOfPices;
+    public int NumberOfFound;
 }

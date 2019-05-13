@@ -15,20 +15,21 @@ public class BrushTool : Tools
         if (ToolController.Instance.selectTool == EToolsType.brush)
             if (ObstacleType.UseTool == ToolType)
         {
-            Debug.Log("HitClick");
-
-            count++;
+                Debug.Log("HitOnstacle");
+                count++;
             if (count >= ObstacleType.NumberScrachToDestroy)
             {
-                Debug.Log("Finally Obstacle Hited");
-                DestroyObstacle(go);
+                    StuffDestroyObstacle(go);
             }
         }
-
-
-        //GetComponent<Collider2D>().enabled = true;
-        // Debug.Log(ObstacleType);
     }
+    //void StuffDestroyObstacle(GameObject go)
+    //{
+    //    Debug.Log("Obstacle Destroy");
+    //    ToolController.Instance.PutTool();
+    //    ItemController.Instance.GenerateItem(LvlController.Instance.TempeItemsListInfo);
+    //    DestroyObstacle(go);
+    //}
     void OnMouseDown()
     {
         GetComponent<Collider2D>().enabled = false;

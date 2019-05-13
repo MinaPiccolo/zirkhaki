@@ -24,4 +24,12 @@ public class Tools : MonoBehaviour
         DestroyOstacleEvent(Go);
     }
 
+    protected void StuffDestroyObstacle(GameObject go)
+    {
+        Debug.Log("Obstacle Destroy");
+        ToolController.Instance.PutTool();
+        ItemController.Instance.GenerateItem(LvlController.Instance.TempItemInfo);
+        DestroyObstacle(go);
+    }
+
 }
