@@ -21,14 +21,14 @@ public class HUD : MonoBehaviour
     {
         
     }
-    public void showInventory()
-    {
-        inv.text = "";
-        for (int i=0;i<Player.Instance.Inventory.Count;i++)
-        {
-            inv.text += Player.Instance.Inventory[i] + "/";
-        }
-    }
+    //public void showInventory()
+    //{
+    //    inv.text = "";
+    //    for (int i=0;i<Player.Instance.Inventory.Count;i++)
+    //    {
+    //        inv.text += Player.Instance.Inventory[i] + "/";
+    //    }
+    //}
   
     void Update()
     {

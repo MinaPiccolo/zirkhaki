@@ -34,7 +34,7 @@ public class ItemObj : MonoBehaviour
         //    return;
         //Player.Instance.PutItemToInventory(type, findEmptySlot);
 
-        Player.Instance.AddItemToInventory(ItemInfoObj);//ItemId, ItemType, ItemName, PiecesCount, FoundPieces);
+        //InventoryController.Instance.AddItemToInventory(ItemInfoObj);//ItemId, ItemType, ItemName, PiecesCount, FoundPieces);
         SimplePool.Despawn(gameObject);
     }
   
