@@ -7,4 +7,5 @@ public struct RareItemsData
     public string NameRareItem;
     public int IncomeCurrency;
     public int NumberOfPices;
+    public int NumberOfFound;
 }

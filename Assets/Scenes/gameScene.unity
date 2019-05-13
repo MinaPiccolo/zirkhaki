@@ -288,12 +288,12 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
-    m_FontStyle: 0
+    m_FontSize: 100
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
-    m_MaxSize: 50
-    m_Alignment: 4
+    m_MaxSize: 100
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -597,6 +597,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLevelIndex: 0
+  TempLvlList: []
+  TempItemInfo:
+    MainItemsList: []
+    RareItemsList: []
+    NumberJunkItems: 0
+    ItemLocation: {fileID: 0}
 --- !u!114 &1018528264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,15 +629,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MapInfo: {fileID: 11400000, guid: 1516aa7e6210c4d45937c7da0a6c638d, type: 2}
+  NewMap: {fileID: 0}
   StateInfo: []
   LevelInfo: []
   RegionInfo: []
-  ItemInfo:
-    MainItemsList: []
-    RareItemsList: []
-    NumberJunkItems: 0
-    ItemLocation: {fileID: 0}
-  ObstacleInfo: []
 --- !u!114 &1018528266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,12 +1100,12 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
-    m_FontStyle: 0
+    m_FontSize: 100
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 50
-    m_Alignment: 4
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1244,12 +1245,12 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
-    m_FontStyle: 0
+    m_FontSize: 100
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 5
-    m_MaxSize: 50
-    m_Alignment: 4
+    m_MaxSize: 100
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1772,20 +1773,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstacleObj
       objectReference: {fileID: 0}
-    - target: {fileID: 6872164764684121610, guid: 504725f71ac8b7d459c15da420469ff0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.73
       objectReference: {fileID: 0}
     - target: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
         type: 3}

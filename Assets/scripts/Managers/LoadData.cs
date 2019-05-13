@@ -5,21 +5,23 @@ using System.Linq;
 public class LoadData : MonoBehaviour
 {
     public MapData MapInfo;
+    public MapData NewMap;
     public List<StateData> StateInfo;
     public List<LevelData> LevelInfo;
     public List<RegionData> RegionInfo;
-    public ItemsData ItemInfo;
-    public List<ObstacleData> ObstacleInfo;
+   // public ItemsData ItemInfo;
+    //public List<ObstacleData> ObstacleInfo;
     public static LoadData Instance { get; private set; }
 
     void Awake()
     {
         Instance = this;
+        NewMap = Instantiate(MapInfo);
     }
 
     void Start()
     {
-        StateInfo = MapInfo.StatesList;
+        StateInfo = NewMap.StatesList;
 
         foreach (StateData stateData in StateInfo)
         {
@@ -28,12 +30,12 @@ public class LoadData : MonoBehaviour
             {
                 RegionInfo = ld.RegionsList;
 
-                foreach (RegionData rd in RegionInfo)
-                    ObstacleInfo = rd.ObstaclesList;
-                   
+                //foreach (RegionData rd in RegionInfo)
+                //    ObstacleInfo = rd.ObstaclesList;
+
             }
-            foreach (LevelData ld in LevelInfo)
-                ItemInfo = ld.ItemsList;
+            //foreach (LevelData ld in LevelInfo)
+            //    ItemInfo = ld.ItemsList;
         }
 
     }
