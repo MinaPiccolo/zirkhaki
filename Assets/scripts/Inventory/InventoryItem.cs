@@ -9,6 +9,7 @@ public struct InventoryItem
     public string ItemName;
     public int PiecesCount;
     public int FoundPieces;
+    public bool IsCompleted;
 
 }
 

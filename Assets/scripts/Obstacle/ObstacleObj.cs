@@ -6,8 +6,8 @@ using UnityEngine.AddressableAssets;
 public class ObstacleObj : MonoBehaviour
 {
     private bool isMouseDwn = false, isMouseDrag = false;
-    private int count = 0;
-    private EToolsType ToolTypeClicked=EToolsType.non;
+   // private int count = 0;
+    //private EToolsType ToolTypeClicked=EToolsType.non;
     private GameObject ToolGoClicked;
 
     public delegate void ActionObstacleHit(ObstacleData ObstacleInfo,GameObject Go);
