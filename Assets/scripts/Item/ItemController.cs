@@ -7,7 +7,6 @@ public class ItemController : MonoBehaviour
     public GameObject[] itemsGo;
     public Transform parentItems;
     string mainlist, rarelist, junkList;
-    //ItemsData ItemList;
     public static ItemController Instance { get; private set; }
 
     void Awake()
@@ -19,22 +18,19 @@ public class ItemController : MonoBehaviour
     {
         convertListToSt(LvlController.Instance.TempItemInfo);
     }
-
-    public void GenerateItem(ItemsData itemList)
+    #region Generate item
+   
+    public void GenerateItem(ItemsData itemList, Vector2 ObstaclePos)
     {
         convertListToSt(itemList);
-        GameObject item = Controller.Instance.generateGameObj(itemList.ItemLocation, parentItems);
-        Vector2 pos = itemList.ItemLocation.position;
-        pos.y += 2;
-        item.transform.position = pos;
+      
 
-        GenerateItemRandomDesignWithLastMainPiece(itemList, item);
-    }
-    void GenerateItemRandomDesignWithLastMainPiece(ItemsData itemList, GameObject item)
-    {
-        Debug.Log(CheckLastPiecesMainItem(itemList));
-        if (CheckLastPiecesMainItem(itemList))
+        EItemLevelSate state;
+        StatePiecesItemsLevel(itemList,out state);
+        if (state== EItemLevelSate.oneMainItemRemaining)
         {
+            GameObject item = GenerateGameObject(itemList, ObstaclePos);
+            Debug.Log("Last Part of main");
             if (itemList.JunkItemsList.Count > 0 && itemList.RareItemsList.Count > 0)
                 RandomGenerateItem(item, EItemType.Junk, EItemType.Rare, itemList);
             else if (itemList.JunkItemsList.Count > 0 && itemList.RareItemsList.Count == 0)
@@ -44,32 +40,39 @@ public class ItemController : MonoBehaviour
             else
                 RandomGenerateItem(item, EItemType.Main, itemList);
         }
-        else
+        else if (state == EItemLevelSate.hasItems)
         {
-            Debug.Log("ordinary");
+            GameObject item = GenerateGameObject(itemList, ObstaclePos);
             if (itemList.JunkItemsList.Count > 0 && itemList.RareItemsList.Count > 0)
             {
-                Debug.Log("1");
                 RandomGenerateItem(item, EItemType.Junk, EItemType.Rare, EItemType.Main, itemList);
             }
             else if (itemList.JunkItemsList.Count > 0 && itemList.RareItemsList.Count == 0 )
             {
-                Debug.Log("2");
                 RandomGenerateItem(item, EItemType.Junk, EItemType.Main, itemList);
             }
             else if (itemList.JunkItemsList.Count == 0 && itemList.RareItemsList.Count > 0)
             {
-                Debug.Log("3");
                 RandomGenerateItem(item, EItemType.Rare, EItemType.Main, itemList);
             }
             else if (itemList.JunkItemsList.Count == 0 && itemList.RareItemsList.Count == 0)
             {
-                Debug.Log("4");
                 RandomGenerateItem(item,EItemType.Main, itemList);
             }
         }
+        else
+        {
+            Debug.Log("FinishItemLvl");
+        }
     }
-
+    GameObject GenerateGameObject(ItemsData itemList, Vector2 ObstaclePos)
+    {
+        GameObject item = Controller.Instance.generateGameObj(itemList.ItemLocation, parentItems);
+        Vector2 pos = ObstaclePos;// itemList.ItemLocation.position;
+        pos.x += 1;
+        item.transform.position = pos;
+        return item;
+    }
     void RandomGenerateItem(GameObject item, EItemType type1, ItemsData itemList)
     {
         GenerateItemBaseOnType(item, type1, itemList);
@@ -102,12 +105,23 @@ public class ItemController : MonoBehaviour
             GenerateJunkItem(item, EItemType.Junk,itemList);
     }
 
-    bool CheckLastPiecesMainItem(ItemsData itemList)
+    void StatePiecesItemsLevel(ItemsData itemList, out EItemLevelSate state)
     {
-        if (itemList.MainItemsList.Count == 1)
+
+        if (itemList.MainItemsList.Count <= 1)
+        {
+            if (itemList.MainItemsList.Count == 0)
+            {
+                state = EItemLevelSate.finishItem;
+                return;
+            }
             if (itemList.MainItemsList[0].NumberOfFound + 1 >= itemList.MainItemsList[0].NumberOfPices)
-                return true;
-        return false;
+            {
+                state = EItemLevelSate.oneMainItemRemaining;
+                return;
+            }
+        }
+        state = EItemLevelSate.hasItems;
     }
     void GenerateMainItem(GameObject item, EItemType type, ItemsData itemList)
     {
@@ -116,8 +130,12 @@ public class ItemController : MonoBehaviour
         itemObjScr.ItemType = type;
         int ranId = Random.Range(0, itemList.MainItemsList.Count);
         itemObjScr.ItemId = itemList.MainItemsList[ranId].ItemId;
+        itemObjScr.IndexTypeItem = ranId;
+        //itemObjScr.itemList = itemList;
         itemObjScr.MainItemsInfo = itemList.MainItemsList[ranId];
-        itemList.MainItemsList.RemoveAt(ranId);
+        MainPieseseAdd(itemList, ranId);
+        if (CheckPiecesComplete(itemList.MainItemsList[ranId].NumberOfPices,itemList.MainItemsList[ranId].NumberOfFound))
+            itemList.MainItemsList.RemoveAt(ranId);
         convertListToSt(itemList);
     }
     void GenerateRareItem(GameObject item, EItemType type, ItemsData itemList)
@@ -126,37 +144,61 @@ public class ItemController : MonoBehaviour
         itemObjScr.ItemType = type;
         int ranId = Random.Range(0, itemList.RareItemsList.Count);
         itemObjScr.ItemId = itemList.RareItemsList[ranId].ItemId;
+        itemObjScr.IndexTypeItem = ranId;
+        //itemObjScr.itemList = itemList;
         itemObjScr.RareItemsInfo = itemList.RareItemsList[ranId];
-        itemList.RareItemsList.RemoveAt(ranId);
+        RarePieseseAdd(itemList, ranId);
+        if (CheckPiecesComplete(itemList.RareItemsList[ranId].NumberOfPices, itemList.RareItemsList[ranId].NumberOfFound))
+            itemList.RareItemsList.RemoveAt(ranId);
         convertListToSt(itemList);
     }
     void GenerateJunkItem(GameObject item, EItemType type,ItemsData itemList)
     {
-        //Debug.Log(itemList.NumberJunkItems);
         ItemObj itemObjScr = AddItemObjScript(item);
         itemObjScr.ItemType = type;
         int ranId = Random.Range(0, itemList.JunkItemsList.Count);
         itemObjScr.ItemId = itemList.JunkItemsList[ranId].ItemId;
-        itemObjScr.JunkItemInfo = itemList.JunkItemsList[ranId];
+        //itemObjScr.JunkItemInfo = itemList.JunkItemsList[ranId];
         itemList.JunkItemsList.RemoveAt(ranId);
-        //itemList.NumberJunkItems--;
         convertListToSt(itemList);
     }
+    #endregion
 
-    void Update()
+
+    public void MainPieseseAdd(ItemsData itemList,int index)
     {
-
+        var a = itemList.MainItemsList[index];
+        a.NumberOfFound++;
+        itemList.MainItemsList[index] = a;
     }
+    public void RarePieseseAdd(ItemsData itemList,int index)
+    {
+        var a = itemList.RareItemsList[index];
+        a.NumberOfFound++;
+        itemList.RareItemsList[index] = a;
+    }
+
+
+
+
+    public bool CheckPiecesComplete(int piecesCount, int foundPieces)
+    {
+        if (foundPieces >= piecesCount)
+            return true;
+        else
+            return false;
+    }
+   
     void convertListToSt(ItemsData itemList)
     {
         mainlist = "";
         rarelist = "";
         junkList = "";
         for (int i = 0; i < itemList.MainItemsList.Count; i++)
-            mainlist += itemList.MainItemsList[i].NameMainItem + ",";
+            mainlist += itemList.MainItemsList[i].NameMainItem + " " + itemList.MainItemsList[i].NumberOfFound + "/" + itemList.MainItemsList[i].NumberOfPices + ",";
 
         for (int i = 0; i < itemList.RareItemsList.Count; i++)
-            rarelist += itemList.RareItemsList[i].NameRareItem + ",";
+            rarelist += itemList.RareItemsList[i].NameRareItem + " " + itemList.RareItemsList[i].NumberOfFound + "/" + itemList.RareItemsList[i] .NumberOfPices+ ",";
 
         for (int i = 0; i < itemList.JunkItemsList.Count; i++)
             junkList += itemList.JunkItemsList[i].NameJunkItem + ",";
@@ -171,6 +213,7 @@ public class ItemController : MonoBehaviour
         else
         {
             itemObjScr = item.GetComponent<ItemObj>();
+            // itemObjScr.itemList = new ItemsData();
             itemObjScr.MainItemsInfo = new MainItemsData();
             itemObjScr.RareItemsInfo = new RareItemsData();
             itemObjScr.JunkItemInfo = new JunkItemsData();
@@ -183,10 +226,10 @@ public class ItemController : MonoBehaviour
         GUI.color = Color.red;
         GUIStyle myStyle = new GUIStyle();
         myStyle.normal.textColor = Color.red;
-        myStyle.fontSize = 100;
+        myStyle.fontSize = 80;
         GUI.Label(new Rect(10, 0, 400, 100), mainlist + " ", myStyle);
-        GUI.Label(new Rect(10, 100, 400, 100), rarelist + " ", myStyle);
-        GUI.Label(new Rect(10, 200, 400, 100), junkList + " ", myStyle);
+        GUI.Label(new Rect(10, 80, 400, 100), rarelist + " ", myStyle);
+        GUI.Label(new Rect(10, 160, 400, 100), junkList + " ", myStyle);
 
     }
 }

@@ -31,32 +31,48 @@ public class InventoryController : MonoBehaviour
     #region AddItems
     public void AddMainItem(MainItemsData mainItemsInfo)
     {
-        InventoryItem item=new InventoryItem();
-        item.ItemId = mainItemsInfo.ItemId;
-        item.ItemType = EItemType.Main;
-        item.ItemName = mainItemsInfo.NameMainItem;
-        item.PiecesCount = mainItemsInfo.NumberOfPices;
-        item.FoundPieces = mainItemsInfo.NumberOfFound;
-        item.IsCompleted = CheckPiecesComplete(item.PiecesCount, item.FoundPieces);
-        MainInventory.Add(item);
-        if (item.IsCompleted)
-            DoStuffCompeletedPieces();
 
+        int findIdItemIndex = FindIdItemIndex(mainItemsInfo.ItemId, MainInventory);
+        if (findIdItemIndex != -1)
+        {
+            PieseseAddExist(ref MainInventory, findIdItemIndex);
+        }
+        else
+        {
+            InventoryItem item = new InventoryItem();
+            item.ItemId = mainItemsInfo.ItemId;
+            item.ItemType = EItemType.Main;
+            item.ItemName = mainItemsInfo.NameMainItem;
+            item.PiecesCount = mainItemsInfo.NumberOfPices;
+            item.FoundPieces++;
+            item.IsCompleted = CheckPiecesComplete(item.PiecesCount, item.FoundPieces);
+            MainInventory.Add(item);
+            if (item.IsCompleted)
+                DoStuffCompeletedPieces();
+        }
         convertListToSt();
         ShowMainInventory();
     }
     public void AddRareItem(RareItemsData rareItemInfo)
     {
-        InventoryItem item = new InventoryItem(); ;
-        item.ItemId = rareItemInfo.ItemId;
-        item.ItemType = EItemType.Rare;
-        item.ItemName = rareItemInfo.NameRareItem;
-        item.PiecesCount = rareItemInfo.NumberOfPices;
-        item.FoundPieces = rareItemInfo.NumberOfFound;
-        item.IsCompleted = CheckPiecesComplete(item.PiecesCount, item.FoundPieces);
-        RareInventory.Add(item);
-        if (item.IsCompleted)
-            DoStuffCompeletedPieces();
+        int findIdItemIndex = FindIdItemIndex(rareItemInfo.ItemId, RareInventory);
+        if (findIdItemIndex != -1)
+        {
+            PieseseAddExist(ref RareInventory, findIdItemIndex);
+        }
+        else
+        {
+            InventoryItem item = new InventoryItem(); ;
+            item.ItemId = rareItemInfo.ItemId;
+            item.ItemType = EItemType.Rare;
+            item.ItemName = rareItemInfo.NameRareItem;
+            item.PiecesCount = rareItemInfo.NumberOfPices;
+            item.FoundPieces++;
+            item.IsCompleted = CheckPiecesComplete(item.PiecesCount, item.FoundPieces);
+            RareInventory.Add(item);
+            if (item.IsCompleted)
+                DoStuffCompeletedPieces();
+        }
 
         convertListToSt();
         ShowRareInventory();
@@ -123,6 +139,25 @@ public class InventoryController : MonoBehaviour
     {
 
     }
+
+    int FindIdItemIndex(int IdItem, List<InventoryItem> inventory)
+    {
+        for (int i = 0; i < inventory.Count; i++)
+            if (inventory[i].ItemId == IdItem)
+                return i;
+        return -1;
+
+    }
+    public void PieseseAddExist(ref List<InventoryItem> inventory, int index)
+    {
+        var inv = inventory[index];
+        inv.FoundPieces++;
+        inv.IsCompleted = CheckPiecesComplete(inv.PiecesCount, inv.FoundPieces);
+        inventory[index] = inv;
+        if (inventory[index].IsCompleted)
+            DoStuffCompeletedPieces();
+    }
+   
     #endregion
 
 
@@ -154,10 +189,10 @@ public class InventoryController : MonoBehaviour
         invRar = "";
         invJunk = "";
         for (int i = 0; i < MainInventory.Count; i++)
-            invMain += MainInventory[i].ItemId + ",";
+            invMain += MainInventory[i].ItemId + " " + MainInventory[i].FoundPieces + "/" + MainInventory[i].PiecesCount + ",";
 
         for (int i = 0; i < RareInventory.Count; i++)
-            invRar += RareInventory[i].ItemId + ",";
+            invRar += RareInventory[i].ItemId + " " + RareInventory[i].FoundPieces + "/" + RareInventory[i].PiecesCount + ",";
 
         for (int i = 0; i < JunkInventory.Count; i++)
             invJunk += JunkInventory[i].ItemId + ",";

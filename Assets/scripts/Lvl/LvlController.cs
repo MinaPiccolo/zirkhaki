@@ -5,7 +5,7 @@ using UnityEngine;
 public class LvlController : MonoBehaviour
 {
     public int CurrentLevelIndex;
-    public List<LevelData> TempLvlList;
+   // public List<LevelData> TempLvlList;
 
     public ItemsData TempItemInfo;
     public static LvlController Instance { get; private set; }

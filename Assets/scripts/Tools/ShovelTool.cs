@@ -4,32 +4,25 @@ using UnityEngine;
 
 public class ShovelTool : Tools
 {
-    private int count = 0;
     private void OnEnable()
     {
         ToolController.ChangePositionEvent += ChangePosition;
         ObstacleObj.ObstacleHitEvent += ObstacleHited;
     }
-    void ObstacleHited(ObstacleData ObstacleType,GameObject go)
+    void ObstacleHited(GameObject go)
     {
+        ObstacleObj obsScr = go.GetComponent<ObstacleObj>();
         if (ToolController.Instance.selectTool == EToolsType.shovel)
-            if (ObstacleType.UseTool == ToolType)
+            if (obsScr.ObstacleInfoObj.UseTool == ToolType)
             {
-                Debug.Log("HitOnstacle");
-                count++;
-                if (count >= ObstacleType.NumberScrachToDestroy)
+                obsScr.CountClick++;
+                Debug.Log("Hit");
+                if (obsScr.CountClick >= obsScr.ObstacleInfoObj.NumberScrachToDestroy)
                 {
                     StuffDestroyObstacle(go);
                 }
             }
     }
-    //void StuffDestroyObstacle(GameObject go)
-    //{
-    //    Debug.Log("Obstacle Destroy");
-    //    ToolController.Instance.PutTool();
-    //    ItemController.Instance.GenerateItem(LvlController.Instance.TempeItemsListInfo);
-    //    DestroyObstacle(go);
-    //}
     void OnMouseDown()
     {
         GetComponent<Collider2D>().enabled = false;
