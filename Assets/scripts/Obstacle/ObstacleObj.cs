@@ -10,10 +10,11 @@ public class ObstacleObj : MonoBehaviour
     //private EToolsType ToolTypeClicked=EToolsType.non;
     private GameObject ToolGoClicked;
 
-    public delegate void ActionObstacleHit(ObstacleData ObstacleInfo,GameObject Go);
+    public delegate void ActionObstacleHit(GameObject Go);
     public static event ActionObstacleHit ObstacleHitEvent;
 
     public ObstacleData ObstacleInfoObj;
+    public int CountClick;
     
     void OnEnable()
     {
@@ -73,12 +74,6 @@ public class ObstacleObj : MonoBehaviour
         {
             if (isMouseDwn && isMouseDrag)
                 CheckHitObstacle();
-            //    count++;
-            //if (count >= ObstacleInfoObj.NumberScrachToDestroy)
-            //{
-            //    ItemController.Instance.GenerateItem(transform.position);
-            //    SimplePool.Despawn(gameObject);
-            //}
         }
        
 
@@ -86,22 +81,7 @@ public class ObstacleObj : MonoBehaviour
 
     void CheckHitObstacle()
     {
-        ObstacleHitEvent(ObstacleInfoObj,gameObject);
-        // Debug.Log(ToolTypeClicked);
-    //    if (ObstacleInfoObj.UseTool == ToolTypeClicked)
-    //    {
-    //        Debug.Log("HitClick");
-          
-    //        count++;
-    //        if (count >= ObstacleInfoObj.NumberScrachToDestroy)
-    //        {
-    //            //ObstacleHitEndEvent();
-    //            Debug.Log("Finally Obstacle Hited");
-    //            ItemController.Instance.GenerateItem(transform.position);
-    //            SimplePool.Despawn(gameObject);
-    //        }
-    //    }
-        
+        ObstacleHitEvent(gameObject);
     }
 
     void DestroyObs(GameObject Go)

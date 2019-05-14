@@ -6,27 +6,12 @@ using UnityEngine.UI;
 public class ItemObj : MonoBehaviour
 {
     public int ItemId;
+    public int IndexTypeItem;
     public EItemType ItemType;
+   // public ItemsData itemList;
     public MainItemsData MainItemsInfo;
     public RareItemsData RareItemsInfo;
     public JunkItemsData JunkItemInfo;
-   // public int NumberJunk;
-    //public ItemsData ItemInfoObj;
-
-    //public int ItemId;
-    //public EItemType ItemType;
-    //public string ItemName;
-    //public int PiecesCount;
-    //public int FoundPieces;
-    //public int index;
-    //public int type;
-    //void Start()
-    //{
-    //}
-    //void Update()
-    //{
-
-    //}
 
     void OnMouseDown()
     {
@@ -36,19 +21,20 @@ public class ItemObj : MonoBehaviour
     {
         if(ItemType==EItemType.Main)
         {
-            MainItemsInfo.NumberOfFound++;
-            InventoryController.Instance.AddMainItem(MainItemsInfo);
+            //ItemController.Instance.MainPieseseAdd(itemList,IndexTypeItem);
+            //MainItemsInfo.NumberOfFound++;
+            InventoryController.Instance.AddMainItem(MainItemsInfo);// itemList.MainItemsList[IndexTypeItem]);
         }
         else if (ItemType == EItemType.Rare)
         {
-            RareItemsInfo.NumberOfFound++;
-            InventoryController.Instance.AddRareItem(RareItemsInfo);
+            //ItemController.Instance.RarePieseseAdd(itemList,IndexTypeItem);
+            //RareItemsInfo.NumberOfFound++;
+            InventoryController.Instance.AddRareItem(RareItemsInfo);//itemList.RareItemsList[IndexTypeItem]);//RareItemsInfo);
         }
         else if (ItemType == EItemType.Junk)
         {
-            InventoryController.Instance.AddJunkItem(JunkItemInfo);
+            InventoryController.Instance.AddJunkItem(JunkItemInfo);// itemList.JunkItemsList[IndexTypeItem]);//JunkItemInfo);
         }
-
         SimplePool.Despawn(gameObject);
     }
   

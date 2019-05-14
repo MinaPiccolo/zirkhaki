@@ -5,7 +5,7 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     public GameObject HUDGo;
-    public Camera CamGame;
+    //public Camera CamGame;
     public static Controller Instance { get; private set; }
 
     void Awake()

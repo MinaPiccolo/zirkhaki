@@ -46,13 +46,13 @@ MonoBehaviour:
             type: 3}
           TypeObstacle: 0
           UseTool: 0
-          NumberScrachToDestroy: 2
+          NumberScrachToDestroy: 4
         - ObstacleId: 0
           LocationObstacle: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
             type: 3}
           TypeObstacle: 0
           UseTool: 0
-          NumberScrachToDestroy: 2
+          NumberScrachToDestroy: 7
         - ObstacleId: 0
           LocationObstacle: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
             type: 3}
@@ -83,31 +83,7 @@ MonoBehaviour:
           IncomeCurrency: 0
           NumberOfPices: 5
           NumberOfFound: 0
-        - ItemId: 2
-          NameMainItem: m2
-          IncomeCurrency: 0
-          NumberOfPices: 5
-          NumberOfFound: 0
-        - ItemId: 3
-          NameMainItem: m3
-          IncomeCurrency: 0
-          NumberOfPices: 5
-          NumberOfFound: 0
-        RareItemsList:
-        - ItemId: 1
-          NameRareItem: r1
-          IncomeCurrency: 0
-          NumberOfPices: 5
-          NumberOfFound: 0
-        - ItemId: 2
-          NameRareItem: r2
-          IncomeCurrency: 0
-          NumberOfPices: 5
-          NumberOfFound: 0
-        JunkItemsList:
-        - ItemId: 1
-          NameJunkItem: j1
-        - ItemId: 2
-          NameJunkItem: j2
+        RareItemsList: []
+        JunkItemsList: []
         ItemLocation: {fileID: 6057026035800120060, guid: b2b8a5df60c3ac047a27168c1dfe7e2b,
           type: 3}
