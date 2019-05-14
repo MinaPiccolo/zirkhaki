@@ -4,5 +4,6 @@ using UnityEngine;
 [System.Serializable]
 public struct JunkItemsData
 {
-    public string NameMainItem;
+    public int ItemId;
+    public string NameJunkItem;
 }

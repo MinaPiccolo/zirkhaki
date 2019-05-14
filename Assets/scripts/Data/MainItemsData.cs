@@ -5,6 +5,7 @@ using UnityEngine;
 
 public struct MainItemsData
 {
+    public int ItemId;
     public string NameMainItem;
     public int IncomeCurrency;
     public int NumberOfPices;

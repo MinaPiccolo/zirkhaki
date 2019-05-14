@@ -9,6 +9,8 @@ public class ItemObj : MonoBehaviour
     public EItemType ItemType;
     public MainItemsData MainItemsInfo;
     public RareItemsData RareItemsInfo;
+    public JunkItemsData JunkItemInfo;
+   // public int NumberJunk;
     //public ItemsData ItemInfoObj;
 
     //public int ItemId;
@@ -35,16 +37,16 @@ public class ItemObj : MonoBehaviour
         if(ItemType==EItemType.Main)
         {
             MainItemsInfo.NumberOfFound++;
-            InventoryController.Instance.AddMainItem(MainItemsInfo, ItemId);
+            InventoryController.Instance.AddMainItem(MainItemsInfo);
         }
         else if (ItemType == EItemType.Rare)
         {
             RareItemsInfo.NumberOfFound++;
-            InventoryController.Instance.AddRareItem(RareItemsInfo,ItemId);
+            InventoryController.Instance.AddRareItem(RareItemsInfo);
         }
         else if (ItemType == EItemType.Junk)
         {
-            InventoryController.Instance.AddJunkItem(ItemId);
+            InventoryController.Instance.AddJunkItem(JunkItemInfo);
         }
 
         SimplePool.Despawn(gameObject);

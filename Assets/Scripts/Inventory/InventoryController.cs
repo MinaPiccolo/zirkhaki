@@ -29,10 +29,10 @@ public class InventoryController : MonoBehaviour
     }
 
     #region AddItems
-    public void AddMainItem(MainItemsData mainItemsInfo,int itemId)
+    public void AddMainItem(MainItemsData mainItemsInfo)
     {
-        InventoryItem item;
-        item.ItemId = itemId;
+        InventoryItem item=new InventoryItem();
+        item.ItemId = mainItemsInfo.ItemId;
         item.ItemType = EItemType.Main;
         item.ItemName = mainItemsInfo.NameMainItem;
         item.PiecesCount = mainItemsInfo.NumberOfPices;
@@ -45,16 +45,16 @@ public class InventoryController : MonoBehaviour
         convertListToSt();
         ShowMainInventory();
     }
-    public void AddRareItem(RareItemsData rareItemInfo,int itemId)
+    public void AddRareItem(RareItemsData rareItemInfo)
     {
-        InventoryItem item;
-        item.ItemId = itemId;
+        InventoryItem item = new InventoryItem(); ;
+        item.ItemId = rareItemInfo.ItemId;
         item.ItemType = EItemType.Rare;
         item.ItemName = rareItemInfo.NameRareItem;
         item.PiecesCount = rareItemInfo.NumberOfPices;
         item.FoundPieces = rareItemInfo.NumberOfFound;
         item.IsCompleted = CheckPiecesComplete(item.PiecesCount, item.FoundPieces);
-        MainInventory.Add(item);
+        RareInventory.Add(item);
         if (item.IsCompleted)
             DoStuffCompeletedPieces();
 
@@ -62,19 +62,19 @@ public class InventoryController : MonoBehaviour
         ShowRareInventory();
     }
 
-    public void AddJunkItem(int itemId)
+    public void AddJunkItem(JunkItemsData junkItemInfo)
     {
         if (CheckJunkInventoryIsFull())
             RemoveJunkItem();
 
-        InventoryItem item;
-        item.ItemId = itemId;
+        InventoryItem item = new InventoryItem(); ;
+        item.ItemId = junkItemInfo.ItemId;
         item.ItemType = EItemType.Junk;
-        item.ItemName = "junk";
+        item.ItemName =junkItemInfo.NameJunkItem;
         item.PiecesCount = 0;
         item.FoundPieces = 0;
         item.IsCompleted = true;
-        MainInventory.Add(item);
+        JunkInventory.Add(item);
 
         convertListToSt();
         ShowJunkInventory();
@@ -170,9 +170,9 @@ public class InventoryController : MonoBehaviour
         GUIStyle myStyle = new GUIStyle();
         myStyle.normal.textColor = Color.red;
         myStyle.fontSize = 100;
-        GUI.Label(new Rect(10, 300, 400, 100), invMain + " invM", myStyle);
-        GUI.Label(new Rect(10, 400, 400, 100), invRar + " invR", myStyle);
-        GUI.Label(new Rect(10, 500, 400, 100), invJunk + " invj ", myStyle);
+        GUI.Label(new Rect(10, 300, 400, 100), invMain + " ", myStyle);
+        GUI.Label(new Rect(10, 400, 400, 100), invRar + " ", myStyle);
+        GUI.Label(new Rect(10, 500, 400, 100), invJunk + "  ", myStyle);
 
     }
 }

@@ -29,8 +29,8 @@ public class ObstacleController : MonoBehaviour
             //ObstacleGo.Add(obstacle);
           //  obstacle.GetComponent<ObstacleObj>().HitObstacleEvent += Tools.Hitable;
             Vector3 pos=  obstacle.transform.position;
-            pos.x += i*2;
-            pos.y -= i * 2;
+           // pos.x += i*2;
+            pos.y -= i;
             obstacle.transform.position=pos;
             ObstacleObj script = obstacle.AddComponent<ObstacleObj>();
             script.ObstacleInfoObj = obstacleList[i];

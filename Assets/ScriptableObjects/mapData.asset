@@ -47,6 +47,30 @@ MonoBehaviour:
           TypeObstacle: 0
           UseTool: 0
           NumberScrachToDestroy: 2
+        - ObstacleId: 0
+          LocationObstacle: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
+            type: 3}
+          TypeObstacle: 0
+          UseTool: 0
+          NumberScrachToDestroy: 2
+        - ObstacleId: 0
+          LocationObstacle: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
+            type: 3}
+          TypeObstacle: 0
+          UseTool: 0
+          NumberScrachToDestroy: 2
+        - ObstacleId: 0
+          LocationObstacle: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
+            type: 3}
+          TypeObstacle: 0
+          UseTool: 0
+          NumberScrachToDestroy: 2
+        - ObstacleId: 0
+          LocationObstacle: {fileID: 4603459505310353798, guid: 504725f71ac8b7d459c15da420469ff0,
+            type: 3}
+          TypeObstacle: 0
+          UseTool: 0
+          NumberScrachToDestroy: 2
       - RegionId: 0
         LocationRegion: {fileID: 2334317213417037123, guid: dd1fba338bbcc024ab1f7e74a810d1ae,
           type: 3}
@@ -54,27 +78,36 @@ MonoBehaviour:
         ObstaclesList: []
       ItemsList:
         MainItemsList:
-        - NameMainItem: m1
+        - ItemId: 1
+          NameMainItem: m1
           IncomeCurrency: 0
-          NumberOfPices: 10
+          NumberOfPices: 5
           NumberOfFound: 0
-        - NameMainItem: m2
+        - ItemId: 2
+          NameMainItem: m2
           IncomeCurrency: 0
-          NumberOfPices: 20
+          NumberOfPices: 5
           NumberOfFound: 0
-        - NameMainItem: m3
+        - ItemId: 3
+          NameMainItem: m3
           IncomeCurrency: 0
-          NumberOfPices: 30
+          NumberOfPices: 5
           NumberOfFound: 0
         RareItemsList:
-        - NameRareItem: r1
-          IncomeCurrency: 20
-          NumberOfPices: 10
+        - ItemId: 1
+          NameRareItem: r1
+          IncomeCurrency: 0
+          NumberOfPices: 5
           NumberOfFound: 0
-        - NameRareItem: r2
-          IncomeCurrency: 30
-          NumberOfPices: 20
+        - ItemId: 2
+          NameRareItem: r2
+          IncomeCurrency: 0
+          NumberOfPices: 5
           NumberOfFound: 0
-        NumberJunkItems: 10
+        JunkItemsList:
+        - ItemId: 1
+          NameJunkItem: j1
+        - ItemId: 2
+          NameJunkItem: j2
         ItemLocation: {fileID: 6057026035800120060, guid: b2b8a5df60c3ac047a27168c1dfe7e2b,
           type: 3}
